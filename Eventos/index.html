@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="botao1">Botão 1</button>
+    <button id="botao2">Botão 2</button>
+    <button id="botao3">Botão 3</button>
+
+    <div class="container">
+        <button>Botão 4</button>
+        <button>Botão 5</button>
+        <button>Botão 6</button>
+    </div>
+
+    <script>
+        const botao1 = document.getElementById("botao1")
+        const botao2 = document.getElementById("botao2")
+        const botao3 = document.getElementById("botao3")
+
+        document.addEventListener("click", function () {
+            console.log("evento do document")
+        }, true)
+
+        botao2.addEventListener("click", function (e) {
+            console.log("evento do botao 2")
+            e.stopPropagation()
+        })
+
+        botao3.addEventListener("click", function () {
+            console.log("evento do botao 3")
+        })
+
+        //segunda parte
+
+        const container = document.querySelector(".container")
+
+        container.addEventListener("click", function(e) {
+            if (e.target.nodeName === "BUTTON") {
+                console.log(e.target)
+                console.log(e.currentTarget)
+                console.log(this)
+            }
+        })
+
+    </script>
+</body>
+
+</html>
