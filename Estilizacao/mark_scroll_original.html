@@ -193,18 +193,33 @@
     </main>
 
     <script>
-        const h2 = document.querySelectorAll("h2")
         const links = document.querySelectorAll("ul a")
 
         window.addEventListener("scroll", () => {
-            // console.log(h2[0].getBoundingClientRect().top.toFixed(0))
-            h2[0].getBoundingClientRect().top >= -1000 ? links[0].classList.add("actived") : links[0].classList.remove("actived")
-            h2[0].getBoundingClientRect().top < -1000 && h2[0].getBoundingClientRect().top >= -2300 ? links[1].classList.add("actived") : links[1].classList.remove("actived")
-            h2[0].getBoundingClientRect().top < -2300 ? links[2].classList.add("actived") : links[2].classList.remove("actived")
+            const positions = [...links].map( link => {
+                const href = link.getAttribute("href")
+                const h2 = document.querySelector(href)
+                return h2.getBoundingClientRect().top
+            })
+
+            const link = pegaUltimoElemento(positions)
+
+            const actived = document.querySelector(".actived")
+            if(actived){
+                actived.classList.remove("actived")
+            }
+            
+            if (link){
+                link.classList.add("actived")
+            }    
         })
 
-    </script>
+        function pegaUltimoElemento(position) {
+            const ultimoElemento = position.filter(n => n < 100)
+            return links[ultimoElemento.length - 1]
+        }
 
+    </script>
 </body>
 
 </html>
