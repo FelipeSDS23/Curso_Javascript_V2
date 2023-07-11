@@ -1,4 +1,4 @@
-class AlunosView {
+export class AlunosView {
     constructor(table, materias) {
         this.tablelist = table
         this.tableHeader = this.tablelist.querySelector("thead")
