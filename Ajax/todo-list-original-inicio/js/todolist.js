@@ -1,9 +1,13 @@
 import {Task} from "./Model/Task.model.js"
 import {createXMLHttpRequest} from "./createXMLHttpRequest.js"
 
-const url = "https://jsonplaceholder.typicode.com/todos"
-createXMLHttpRequest("GET", url, init)
+// const url = "https://jsonplaceholder.typicode.com/todos"
+const urlUsers = "http://localhost:3000/users"
+const urlTasks = "http://localhost:3000/tasks"
 
+const userId = 2
+
+createXMLHttpRequest("GET", `${urlUsers}/${userId}/tasks`, init)
 
 function init(arrTasks){
     // a partir de um array de objetos literais, crie um array contendo instancias de Tasks. 
@@ -86,10 +90,17 @@ function init(arrTasks){
         });
     }
 
-    function addTask(taskName) {
+    function addTask(title) {
         // adicione uma nova instancia de Task
-        arrInstancesTasks.push(new Task(taskName))
-        renderTasks()
+
+        const cb = function({title}){
+            arrInstancesTasks.push(new Task(title))
+            renderTasks()
+        }
+
+        const taskString = JSON.stringify({title, userId })
+
+        createXMLHttpRequest("POST", urlTasks, cb, taskString) 
 
     }
 
@@ -145,7 +156,6 @@ function init(arrTasks){
 
     todoAddForm.addEventListener("submit", function (e) {
         e.preventDefault()
-        console.log(itemInput.value)
         addTask(itemInput.value)
         renderTasks()
 
@@ -158,6 +168,6 @@ function init(arrTasks){
     renderTasks()
 }
 
-init()
+
 
 
