@@ -14,6 +14,7 @@ export function Task(title, completed, createdAt, updatedAt) {
     }
     let _title = title
     // this.title = title
+    this.title = title
     this.completed = completed || false
     this.createdAt = createdAt || Date.now()
     this.updatedAt = updatedAt || null
