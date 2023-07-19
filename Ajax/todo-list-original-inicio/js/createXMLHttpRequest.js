@@ -1,4 +1,4 @@
-export function createXMLHttpRequest(method, url, cb, data = null){
+export function createXMLHttpRequest(method, url, sucess, error, data = null){
     const xhr = new XMLHttpRequest()
 
     xhr.open(method, url)
@@ -16,17 +16,13 @@ export function createXMLHttpRequest(method, url, cb, data = null){
             if(xhr.status < 400){
                 const json = JSON.parse(xhr.responseText)
                 
-                if(typeof cb === "function"){
-                    cb(json)
+                if(typeof sucess === "function"){
+                    sucess(json)
                 }
                 
             }
-        } else if (typeof cb === "function" && xhr.status >= 400){ //edit
-            cb({
-                error: true,
-                status: xhr.status,
-                message: "algo deu errado com a conexão"
-            })
+        } else if (typeof error === "function" && xhr.status >= 400){ //edit
+            error("algo deu errado com a conexão")
         }
     }
 }
