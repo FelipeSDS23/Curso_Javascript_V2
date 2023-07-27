@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        let str = 'hoje é 26/02/2018 e amanha será 27/02/18. Meu aniversario é 1/01';
+
+        const regex = /(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/
+        const regexGlobal = /(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/g
+
+        console.log(str.search(regex))
+        console.log(str.match(regex))
+        console.log(regex.exec(str))
+    </script>
+</body>
+
+</html>

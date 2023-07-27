@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p><textarea id="text" cols="180" rows="20"></textarea></p>
+    <p><button type="submit" id="submitBtn">Converter</button></p>
+
+    
+    <script>
+        let text = document.querySelector("#text")
+        const submitBtn = document.querySelector("#submitBtn")
+        const regex = /([\.!?])([\s]*)(\w)/g
+
+        submitBtn.addEventListener("click", function(){
+            if(text.value){
+                let newText = text.value;
+                text.value = newText.replace(regex, function(a,b,c,d,e,f){
+                    return `${b}${c}${d.toUpperCase()}`
+                })
+            }
+        })
+
+    </script>
+
+</body>
+</html>

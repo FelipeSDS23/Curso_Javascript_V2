@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        const regex = /\b[\d]{5}-?[\d]{3}\b/
+
+        const isCepValide = cep => regex.test(cep)
+
+        console.log(isCepValide("34012-536"))
+    </script>
+</body>
+</html>

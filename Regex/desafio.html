@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        const url = "https://www.google.com/search?q=regexr&rlz=1C1ONGR_pt-PTBR1066BR1066&oq=regexr&aqs=chrome.0.69i59j0i512l5j0i30j69i65.4387j0j4&sourceid=chrome&ie=UTF-8"
+    
+        const regex = /[&?](\w+)=([\w=\.-]+)/g
+    
+        let arr;
+        const obj = {}
+
+        while(arr = regex.exec(url)){
+            obj[arr[1]] = arr[2]
+        }
+
+        console.log(obj)
+        
+     
+
+    </script>
+</body>
+</html>
