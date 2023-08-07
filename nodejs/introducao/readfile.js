@@ -5,7 +5,14 @@ const fs = require("fs")
 // console.log(filemdSync)
 // console.log("arquivo lido")
 
-const filemd = fs.readFile("./files/README.md", "utf-8", (err, content) => {
+fs.readFile("./files/README.md", "utf-8", (err, content) => {
+    if (err){
+        throw err
+    }
+    console.log(content)
+})
+
+fs.readFile("./files/banner.jpg", (err, content) => {
     if (err){
         throw err
     }
