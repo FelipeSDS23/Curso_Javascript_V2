@@ -72,15 +72,11 @@ app.route("/tasks/:id")
         // res.send(tasks[taskIndex])
      })
     .delete((req, res) => { 
-
-
-        // MINHA SOLUÇÃO
         const taskIndex = tasks.findIndex(task => task.id === parseInt(req.params.id))
         
-        tasks.splice(taskIndex, 1)
+        const deletedTask = tasks.splice(taskIndex, 1)
 
-        res.send(tasks)
-
+        res.send(deletedTask)
     })
 
 
